@@ -147,7 +147,10 @@ namespace ClasseFrazione
         {
             return _numeratore * _denominatore;
         }
-       
+        public float Divisione()
+        {
+            return _numeratore / _denominatore;
+        }
 
     }
 }
