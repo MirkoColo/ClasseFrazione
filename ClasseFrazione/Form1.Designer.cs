@@ -38,6 +38,7 @@
             this.Divisione = new System.Windows.Forms.Button();
             this.Moltiplicazione = new System.Windows.Forms.Button();
             this.Semplifica = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // contextMenuStrip1
@@ -61,6 +62,7 @@
             this.Den.Size = new System.Drawing.Size(31, 20);
             this.Den.TabIndex = 2;
             this.Den.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.Den.TextChanged += new System.EventHandler(this.Den_TextChanged);
             // 
             // label2
             // 
@@ -100,6 +102,7 @@
             this.Divisione.TabIndex = 8;
             this.Divisione.Text = ":";
             this.Divisione.UseVisualStyleBackColor = true;
+            this.Divisione.Click += new System.EventHandler(this.Divisione_Click);
             // 
             // Moltiplicazione
             // 
@@ -109,6 +112,7 @@
             this.Moltiplicazione.TabIndex = 7;
             this.Moltiplicazione.Text = "X";
             this.Moltiplicazione.UseVisualStyleBackColor = true;
+            this.Moltiplicazione.Click += new System.EventHandler(this.Moltiplicazione_Click);
             // 
             // Semplifica
             // 
@@ -120,11 +124,21 @@
             this.Semplifica.UseVisualStyleBackColor = true;
             this.Semplifica.Click += new System.EventHandler(this.Semplifica_Click);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(13, 72);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(13, 13);
+            this.label1.TabIndex = 10;
+            this.label1.Text = "+";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(228, 252);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.Semplifica);
             this.Controls.Add(this.Divisione);
             this.Controls.Add(this.Moltiplicazione);
@@ -152,6 +166,7 @@
         private System.Windows.Forms.Button Divisione;
         private System.Windows.Forms.Button Moltiplicazione;
         private System.Windows.Forms.Button Semplifica;
+        private System.Windows.Forms.Label label1;
     }
 }
 

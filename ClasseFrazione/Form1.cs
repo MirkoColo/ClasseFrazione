@@ -52,15 +52,18 @@ namespace ClasseFrazione
                 if (frazione._numeratore < 0 && frazione._denominatore > 0)
                 {
                     frazione._numeratore = -frazione._numeratore;
+                    label1.Text = "-";
                 }
                 else if (frazione._numeratore > 0 && frazione._denominatore < 0)
                 {
                     frazione._denominatore = -frazione._denominatore;
+                    label1.Text = "-";
                 }
                 else if (frazione._numeratore < 0 && frazione._denominatore < 0)
                 {
                     frazione._denominatore = -frazione._denominatore;
                     frazione._numeratore = -frazione._numeratore;
+                    label1.Text = "+";
                 }
             }
             else
@@ -83,6 +86,22 @@ namespace ClasseFrazione
         {
             if(Inserimento())
                 MessageBox.Show("La differenza è: " + frazione.Differenza());
+        }
+
+        private void Moltiplicazione_Click(object sender, EventArgs e)
+        {
+            if (Inserimento())
+                MessageBox.Show("Il prodotto è: " + frazione.Moltiplicazione());
+        }
+
+        private void Divisione_Click(object sender, EventArgs e)
+        {
+            if (Inserimento())
+                MessageBox.Show("Il quoziente è: " + frazione.Divisione());
+        }
+
+        private void Den_TextChanged(object sender, EventArgs e)
+        {
         }
     }
     class Frazione
@@ -110,7 +129,7 @@ namespace ClasseFrazione
                 {
                     _numeratore = _numeratore / i;
                     _denominatore = _denominatore / i;
-                    i = 2;
+                    i = 1;
                 }
             }
         }
@@ -124,6 +143,11 @@ namespace ClasseFrazione
         {
             return _numeratore - _denominatore;
         }
+        public float Moltiplicazione()
+        {
+            return _numeratore * _denominatore;
+        }
+       
 
     }
 }
