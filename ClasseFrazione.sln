@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34330.188
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClasseFrazione", "ClasseFrazione\ClasseFrazione.csproj", "{FEFD7538-A5FB-4588-8BBF-B31FAA50619D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FEFD7538-A5FB-4588-8BBF-B31FAA50619D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FEFD7538-A5FB-4588-8BBF-B31FAA50619D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FEFD7538-A5FB-4588-8BBF-B31FAA50619D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FEFD7538-A5FB-4588-8BBF-B31FAA50619D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {FEEAF8B7-49F0-474D-BB65-AE899B34A679}
+	EndGlobalSection
+EndGlobal
