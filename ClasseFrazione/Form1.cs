@@ -44,19 +44,45 @@ namespace ClasseFrazione
         }
         public bool Inserimento()
         {
-            bool giusto = float.TryParse(Num.Text, out _) == true && float.TryParse(Den.Text, out _) == true && Num.Text != string.Empty && Den.Text != string.Empty;
+            bool giusto = float.TryParse(Num.Text, out _) == true && float.TryParse(Den.Text, out _) == true && Num.Text != string.Empty && Den.Text != string.Empty && Den.Text != "0";
             if(giusto == true)
             {
                 frazione._numeratore = float.Parse(Num.Text);
                 frazione._denominatore = float.Parse(Den.Text);
+                if (frazione._numeratore < 0 && frazione._denominatore > 0)
+                {
+                    frazione._numeratore = -frazione._numeratore;
+                }
+                else if (frazione._numeratore > 0 && frazione._denominatore < 0)
+                {
+                    frazione._denominatore = -frazione._denominatore;
+                }
+                else if (frazione._numeratore < 0 && frazione._denominatore < 0)
+                {
+                    frazione._denominatore = -frazione._denominatore;
+                    frazione._numeratore = -frazione._numeratore;
+                }
             }
+            else
+            {
+                Num.Text = " ";
+                Den.Text = " ";
+                
+            }
+
             return giusto;
         }
 
         private void Somma_Click(object sender, EventArgs e)
         {
-            Inserimento();
-            MessageBox.Show("La somma è: " + frazione.Somma());
+            if(Inserimento())
+                MessageBox.Show("La somma è: " + frazione.Somma());
+        }
+
+        private void Sottrazione_Click(object sender, EventArgs e)
+        {
+            if(Inserimento())
+                MessageBox.Show("La differenza è: " + frazione.Differenza());
         }
     }
     class Frazione
@@ -94,6 +120,10 @@ namespace ClasseFrazione
             return _numeratore + _denominatore;
         }
 
+        public float Differenza()
+        {
+            return _numeratore - _denominatore;
+        }
 
     }
 }

@@ -90,6 +90,7 @@
             this.Sottrazione.TabIndex = 6;
             this.Sottrazione.Text = "-";
             this.Sottrazione.UseVisualStyleBackColor = true;
+            this.Sottrazione.Click += new System.EventHandler(this.Sottrazione_Click);
             // 
             // Divisione
             // 
