@@ -89,8 +89,11 @@ namespace ClasseFrazione
             }
         }
 
+        public float Somma()
+        {
+            return _numeratore + _denominatore;
+        }
 
 
-        
     }
 }
