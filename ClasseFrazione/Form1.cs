@@ -43,18 +43,18 @@ namespace ClasseFrazione
         public bool Inserimento()
         {
             bool giusto = float.TryParse(Num.Text, out _) == true && float.TryParse(Den.Text, out _) == true && Num.Text != string.Empty && Den.Text != string.Empty && Den.Text != "0";
-            if(giusto == true)
+            if (giusto == true)
             {
-                
+
                 frazione._numeratore = float.Parse(Num.Text);
                 frazione._denominatore = float.Parse(Den.Text);
-                
+
             }
             else
             {
                 Num.Text = " ";
                 Den.Text = " ";
-                
+
             }
 
             return giusto;
@@ -62,13 +62,13 @@ namespace ClasseFrazione
 
         private void Somma_Click(object sender, EventArgs e)
         {
-            if(Inserimento())
+            if (Inserimento())
                 MessageBox.Show("La somma è: " + frazione.Somma());
         }
 
         private void Sottrazione_Click(object sender, EventArgs e)
         {
-            if(Inserimento())
+            if (Inserimento())
                 MessageBox.Show("La differenza è: " + frazione.Differenza());
         }
 
@@ -86,7 +86,7 @@ namespace ClasseFrazione
 
         private void Den_TextChanged(object sender, EventArgs e)
         {
-            
+
         }
 
         private void Elevamento_Click(object sender, EventArgs e)
@@ -106,13 +106,13 @@ namespace ClasseFrazione
 
         private void Decimale_Click(object sender, EventArgs e)
         {
-            if(Inserimento())
-            frazione.ToDecimale();
+            if (Inserimento())
+                frazione.ToDecimale();
         }
 
         private void Frazion_Click(object sender, EventArgs e)
         {
-            
+
             if (frazione.ToFrazione())
             {
                 Num.Text = frazione._numeratore.ToString();
@@ -120,11 +120,14 @@ namespace ClasseFrazione
             }
         }
     }
-    class Frazione
+
+
+    class Frazione : ICloneable
     {
         public float _numeratore { get; set; }
         public float _denominatore { get; set; }
         public float _minore { get; set; }
+
 
         public Frazione() // COSTRUTTORE DI DEFAULT
         {
@@ -233,6 +236,11 @@ namespace ClasseFrazione
             }
 
             return false;
+        }
+
+        public object Clone()
+        {
+            return this.MemberwiseClone();
         }
     }
 }
