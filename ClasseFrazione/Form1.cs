@@ -4,9 +4,12 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Microsoft.VisualBasic;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace ClasseFrazione
 {
@@ -28,11 +31,6 @@ namespace ClasseFrazione
 
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void Semplifica_Click(object sender, EventArgs e)
         {
             if (Inserimento())
@@ -47,24 +45,10 @@ namespace ClasseFrazione
             bool giusto = float.TryParse(Num.Text, out _) == true && float.TryParse(Den.Text, out _) == true && Num.Text != string.Empty && Den.Text != string.Empty && Den.Text != "0";
             if(giusto == true)
             {
+                
                 frazione._numeratore = float.Parse(Num.Text);
                 frazione._denominatore = float.Parse(Den.Text);
-                if (frazione._numeratore < 0 && frazione._denominatore > 0)
-                {
-                    frazione._numeratore = -frazione._numeratore;
-                    label1.Text = "-";
-                }
-                else if (frazione._numeratore > 0 && frazione._denominatore < 0)
-                {
-                    frazione._denominatore = -frazione._denominatore;
-                    label1.Text = "-";
-                }
-                else if (frazione._numeratore < 0 && frazione._denominatore < 0)
-                {
-                    frazione._denominatore = -frazione._denominatore;
-                    frazione._numeratore = -frazione._numeratore;
-                    label1.Text = "+";
-                }
+                
             }
             else
             {
@@ -102,6 +86,38 @@ namespace ClasseFrazione
 
         private void Den_TextChanged(object sender, EventArgs e)
         {
+            
+        }
+
+        private void Elevamento_Click(object sender, EventArgs e)
+        {
+            if (Inserimento())
+            {
+                frazione.Elevazione();
+                Num.Text = frazione._numeratore.ToString();
+                Den.Text = frazione._denominatore.ToString();
+
+            }
+        }
+
+        private void Num_TextChanged(object sender, EventArgs e)
+        {
+        }
+
+        private void Decimale_Click(object sender, EventArgs e)
+        {
+            if(Inserimento())
+            frazione.ToDecimale();
+        }
+
+        private void Frazion_Click(object sender, EventArgs e)
+        {
+            
+            if (frazione.ToFrazione())
+            {
+                Num.Text = frazione._numeratore.ToString();
+                Den.Text = frazione._denominatore.ToString();
+            }
         }
     }
     class Frazione
@@ -109,9 +125,36 @@ namespace ClasseFrazione
         public float _numeratore { get; set; }
         public float _denominatore { get; set; }
         public float _minore { get; set; }
+
+        public Frazione() // COSTRUTTORE DI DEFAULT
+        {
+            _numeratore = 0.0f;
+            _denominatore = 0.0f;
+            _minore = 0.0f;
+        }
+        public Frazione(Frazione frazione) // COSTRUTTORE DI COPIA
+        {
+            _numeratore = frazione._numeratore;
+            _denominatore = frazione._denominatore;
+            _minore = frazione._minore;
+        }
+
+
         public void TrovaMinore()
         {
-            if (_numeratore > _denominatore)
+            float b = _denominatore;
+            float a = _numeratore;
+            if (_numeratore < 0)
+            {
+                a *= -1;
+            }
+            if (_denominatore < 0) 
+            {
+                b *= -1;
+            }
+            
+            
+            if (a > b)
             {
                 _minore = _denominatore;
             }
@@ -122,7 +165,13 @@ namespace ClasseFrazione
         }
         public void Semplifica()
         {
+            if (_numeratore < 0 && _denominatore < 0)
+            {
+                _numeratore *= -1;
+                _denominatore *= -1;
+            }
             TrovaMinore();
+            
             for (int i = 2; i <= _minore; i++)
             {
                 if (_numeratore % i == 0 && _denominatore % i == 0)
@@ -152,5 +201,48 @@ namespace ClasseFrazione
             return _numeratore / _denominatore;
         }
 
+        public void Elevazione()
+        {
+            string message, title, defaultValue;
+            message = "Inserisci l'esponente ";
+            title = "Input esponente";
+            defaultValue = "";
+            string el = Interaction.InputBox(message, title, defaultValue);
+
+            _numeratore = (float)Math.Pow(Convert.ToDouble(_numeratore), double.Parse(el));
+            _denominatore = (float)Math.Pow(Convert.ToDouble(_denominatore), double.Parse(el));
+        }
+        
+        public void ToDecimale()
+        {
+            MessageBox.Show(Divisione().ToString());
+        }
+
+        public bool ToFrazione()
+        {
+            string message, title, defaultValue;
+            message = "Inserisci il numero decimale ";
+            title = "Input numero";
+            defaultValue = "";
+            string num = Interaction.InputBox(message, title, defaultValue);
+            if(float.TryParse(num, out _) == true && num != string.Empty)
+            {
+                _denominatore = (float)Math.Pow(10, Convert.ToDouble(num.Split(',')[1].Length));
+                _numeratore = float.Parse(num) * _denominatore;
+                return true;
+            }
+
+            return false;
+        }
     }
 }
+
+
+
+
+
+
+
+
+
+

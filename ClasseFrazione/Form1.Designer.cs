@@ -38,7 +38,9 @@
             this.Divisione = new System.Windows.Forms.Button();
             this.Moltiplicazione = new System.Windows.Forms.Button();
             this.Semplifica = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
+            this.Elevamento = new System.Windows.Forms.Button();
+            this.Decimale = new System.Windows.Forms.Button();
+            this.Frazion = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // contextMenuStrip1
@@ -48,16 +50,16 @@
             // 
             // Num
             // 
-            this.Num.Location = new System.Drawing.Point(35, 48);
+            this.Num.Location = new System.Drawing.Point(39, 89);
             this.Num.Name = "Num";
             this.Num.Size = new System.Drawing.Size(31, 20);
             this.Num.TabIndex = 1;
             this.Num.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.Num.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this.Num.TextChanged += new System.EventHandler(this.Num_TextChanged);
             // 
             // Den
             // 
-            this.Den.Location = new System.Drawing.Point(35, 89);
+            this.Den.Location = new System.Drawing.Point(39, 130);
             this.Den.Name = "Den";
             this.Den.Size = new System.Drawing.Size(31, 20);
             this.Den.TabIndex = 2;
@@ -67,7 +69,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(32, 72);
+            this.label2.Location = new System.Drawing.Point(36, 113);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(37, 13);
             this.label2.TabIndex = 4;
@@ -124,21 +126,44 @@
             this.Semplifica.UseVisualStyleBackColor = true;
             this.Semplifica.Click += new System.EventHandler(this.Semplifica_Click);
             // 
-            // label1
+            // Elevamento
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(13, 72);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(13, 13);
-            this.label1.TabIndex = 10;
-            this.label1.Text = "+";
+            this.Elevamento.Location = new System.Drawing.Point(107, 144);
+            this.Elevamento.Name = "Elevamento";
+            this.Elevamento.Size = new System.Drawing.Size(68, 23);
+            this.Elevamento.TabIndex = 10;
+            this.Elevamento.Text = "Eleva";
+            this.Elevamento.UseVisualStyleBackColor = true;
+            this.Elevamento.Click += new System.EventHandler(this.Elevamento_Click);
+            // 
+            // Decimale
+            // 
+            this.Decimale.Location = new System.Drawing.Point(107, 173);
+            this.Decimale.Name = "Decimale";
+            this.Decimale.Size = new System.Drawing.Size(68, 23);
+            this.Decimale.TabIndex = 11;
+            this.Decimale.Text = "Decimale";
+            this.Decimale.UseVisualStyleBackColor = true;
+            this.Decimale.Click += new System.EventHandler(this.Decimale_Click);
+            // 
+            // Frazion
+            // 
+            this.Frazion.Location = new System.Drawing.Point(107, 202);
+            this.Frazion.Name = "Frazion";
+            this.Frazion.Size = new System.Drawing.Size(68, 23);
+            this.Frazion.TabIndex = 12;
+            this.Frazion.Text = "Frazione";
+            this.Frazion.UseVisualStyleBackColor = true;
+            this.Frazion.Click += new System.EventHandler(this.Frazion_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(228, 252);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.Frazion);
+            this.Controls.Add(this.Decimale);
+            this.Controls.Add(this.Elevamento);
             this.Controls.Add(this.Semplifica);
             this.Controls.Add(this.Divisione);
             this.Controls.Add(this.Moltiplicazione);
@@ -166,7 +191,9 @@
         private System.Windows.Forms.Button Divisione;
         private System.Windows.Forms.Button Moltiplicazione;
         private System.Windows.Forms.Button Semplifica;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button Elevamento;
+        private System.Windows.Forms.Button Decimale;
+        private System.Windows.Forms.Button Frazion;
     }
 }
 
